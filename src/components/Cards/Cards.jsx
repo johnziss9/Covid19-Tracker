@@ -45,6 +45,21 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }}) => {
                     </CardContent>
                 </Grid>
             </Grid>
+
+
+
+            <div className="card">
+                <div className="card-header">
+                    Infected Cases
+                </div>
+                <div className="card-body">
+                    <h5 className="card-title">
+                        <CountUp start={0} end={confirmed.value} duration={2.5} separator=',' />
+                    </h5>
+                    <p className="card-text">This shows the number of infected cases globally.</p>
+                    <h6 className="card-text"><u>Last Updated:</u> {new Date(lastUpdate).toDateString()}</h6>
+                </div>
+            </div>
         </div>
     )
 }
