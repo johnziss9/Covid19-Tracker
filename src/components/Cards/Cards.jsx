@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Grid } from '@material-ui/core';
+import { Card, CardContent, Typography, Grid, CardHeader } from '@material-ui/core';
 import CountUp from 'react-countup';
 import cx from 'classnames';
 
@@ -14,52 +14,37 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }}) => {
     return (
         <div className={styles.container}>
             <Grid container grid={3} justify="center">
-                <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
+                <Grid item component={Card} xs={12} md={8} className={cx(styles.card, styles.infected)}>
+                    <CardHeader title="Infected" className={styles.cardHeader}/>
                     <CardContent>
-                        <Typography color="textSecondary" gutterBottom>Infected</Typography>
                         <Typography variant="h5">
                             <CountUp start={0} end={confirmed.value} duration={2.5} separator=',' />
                         </Typography>
-                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
-                        <Typography variant="body2">Number of active cases of COVID-19</Typography>
+                        <Typography color="textSecondary">Last Update: {new Date(lastUpdate).toDateString()}</Typography>
+                        <Typography variant="body2">This shows the total number of cases gloablly.</Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.recovered)}>
+                <Grid item component={Card} xs={12} md={8} className={cx(styles.card, styles.recovered)}>
+                    <CardHeader title="Recovered" className={styles.cardHeader}/>
                     <CardContent>
-                        <Typography color="textSecondary" gutterBottom>Recovered</Typography>
                         <Typography variant="h5">
                             <CountUp start={0} end={recovered.value} duration={2.5} separator=',' />
                         </Typography>
-                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
-                        <Typography variant="body2">Number of recoveries from COVID-19</Typography>
+                        <Typography color="textSecondary">Last Update: {new Date(lastUpdate).toDateString()}</Typography>
+                        <Typography variant="body2">This shows the total number of recoveries gloablly.</Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.deaths)}>
+                <Grid item component={Card} xs={12} md={8} className={cx(styles.card, styles.deaths)}>
+                    <CardHeader title="Deaths" className={styles.cardHeader}/>
                     <CardContent>
-                        <Typography color="textSecondary" gutterBottom>Deaths</Typography>
                         <Typography variant="h5">
                             <CountUp start={0} end={deaths.value} duration={2.5} separator=',' />
                         </Typography>
-                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
-                        <Typography variant="body2">Number of deaths caused by COVID-19</Typography>
+                        <Typography color="textSecondary">Last Update: {new Date(lastUpdate).toDateString()}</Typography>
+                        <Typography variant="body2">This shows the total number of deaths gloablly.</Typography>
                     </CardContent>
                 </Grid>
             </Grid>
-
-
-
-            <div className="card">
-                <div className="card-header">
-                    Infected Cases
-                </div>
-                <div className="card-body">
-                    <h5 className="card-title">
-                        <CountUp start={0} end={confirmed.value} duration={2.5} separator=',' />
-                    </h5>
-                    <p className="card-text">This shows the number of infected cases globally.</p>
-                    <h6 className="card-text"><u>Last Updated:</u> {new Date(lastUpdate).toDateString()}</h6>
-                </div>
-            </div>
         </div>
     )
 }

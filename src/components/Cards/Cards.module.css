@@ -3,19 +3,19 @@
 }
 
 .card {
-    margin: 0 2% !important;
+    margin: 2% 0 !important;
 }
 
 .infected {
-    border-bottom: 10px solid rgba(0, 0, 255, 0.5);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,0,255,1) 100%) !important;
 }
 
 .recovered {
-    border-bottom: 10px solid rgba(0, 255, 0, 0.5);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,255,0,1) 100%) !important;
 }
 
 .deaths {
-    border-bottom: 10px solid rgba(255, 0, 0, 0.5);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 100%) !important;
 }
 
 @media (max-width: 770px) {
@@ -24,7 +24,7 @@
     }
 }
 
-
-.cardNew {
-    background-color: antiquewhite;
+.cardHeader {
+    border-bottom: 1px solid rgba(70, 70, 70, 0.4);
+    padding: 10px !important;
 }
