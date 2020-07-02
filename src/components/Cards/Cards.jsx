@@ -14,7 +14,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }}) => {
     return (
         <div className={styles.container}>
             <Grid container grid={3} justify="center">
-                <Grid item component={Card} xs={12} md={8} className={cx(styles.card, styles.infected)}>
+                <Grid item component={Card} xs={12} sm={8} className={cx(styles.card, styles.infected)}>
                     <CardHeader title="Infected" className={styles.cardHeader}/>
                     <CardContent>
                         <Typography variant="h5">
@@ -24,7 +24,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }}) => {
                         <Typography variant="body2">This shows the total number of cases gloablly.</Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={8} className={cx(styles.card, styles.recovered)}>
+                <Grid item component={Card} xs={12} sm={8} className={cx(styles.card, styles.recovered)}>
                     <CardHeader title="Recovered" className={styles.cardHeader}/>
                     <CardContent>
                         <Typography variant="h5">
@@ -34,7 +34,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }}) => {
                         <Typography variant="body2">This shows the total number of recoveries gloablly.</Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={8} className={cx(styles.card, styles.deaths)}>
+                <Grid item component={Card} xs={12} sm={8} className={cx(styles.card, styles.deaths)}>
                     <CardHeader title="Deaths" className={styles.cardHeader}/>
                     <CardContent>
                         <Typography variant="h5">
