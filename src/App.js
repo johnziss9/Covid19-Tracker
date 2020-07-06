@@ -2,11 +2,10 @@ import React from 'react';
 
 import { Cards, Chart, CountryPicker } from './components';
 import styles from './App.module.css';
+import './StylesOverwrite.css';
 import { fetchData } from './api';
 
 import covid19Image from './images/image.png';
-
-import cx from 'classnames';
 
 class App extends React.Component {
 
@@ -35,21 +34,20 @@ class App extends React.Component {
         return (
             <div className={styles.container}>
                 <img className={styles.image} src={covid19Image} alt="COVID-19" />
-                
-                <nav className={cx(styles.navbar, "navbar navbar-expand-lg justify-content-center")}>
+                <nav className={`${styles.navbar} navbar navbar-expand-lg navbar-light bg-light justify-content-center`}>
                     <div>
-                        <ul className={cx(styles.navbarNav, "navbar-nav")}>
-                            <li className={cx(styles.navbarItem, "nav-item")} onClick={this.handleCardsLink}>
-                                <a className={cx(styles.navbarLink, "nav-link")} href="/">Cards</a>
+                        <ul className={`${styles.navbarNav} navbar-nav`}>
+                            <li className={`${styles.navbarItem} active`}>                            
+                                <a className={`${styles.navbarLink} nav-link`} href="/">Cards</a>
                             </li>
-                            <li className={cx(styles.navbarItem, "nav-item")} onClick={this.handleChartLink}>
-                                <a className={cx(styles.navbarLink, "nav-link")} href="/">Chart</a>
+                            <li className={`${styles.navbarItem}`}>
+                                <a className={`${styles.navbarLink} nav-link`} href="/">Chart</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
                 <CountryPicker handleCountryChange={this.handleCountryChange} />
-                <Cards data={data} /> 
+                <Cards data={data} />
                 <Chart data={data} country={country} />
             </div>
         )
