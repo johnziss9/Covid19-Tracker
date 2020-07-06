@@ -9,15 +9,60 @@ import covid19Image from './images/image.png';
 
 class App extends React.Component {
 
-    state = {
-        data: {},
-        country: ''
+    constructor(props) {
+        super(props);
+
+        this.selectCards = this.selectCards.bind(this);
+        this.selectChart = this.selectChart.bind(this);
+
+        this.state = {
+            data: {},
+            country: '',
+            activeCards: false,
+            activeChart: false,
+            showCards: false,
+            showChart: false,
+            hideCards: false,
+            hideChart: false
+        }
     }
+
+    selectCards() {
+        const activeCurrentState = this.state.activeCards;
+        const currentHideChartState = this.state.hideChart;
+        const currentShowCardsState = this.state.showCards;
+
+        if (!activeCurrentState)
+            this.setState({ activeCards: !activeCurrentState, 
+                            activeChart: activeCurrentState, 
+                            hideChart: !currentHideChartState, 
+                            showCards: !currentShowCardsState,
+                            showChart: currentHideChartState,
+                            hideCards: currentShowCardsState 
+                        });
+    };
+
+    selectChart() {
+        const activeCurrentState = this.state.activeChart;
+        const currentHideCardsState = this.state.hideCards;
+        const currentShowChartState = this.state.showChart;
+
+        if (!activeCurrentState)
+            this.setState({ activeChart: !activeCurrentState, 
+                            activeCards: activeCurrentState, 
+                            hideCards: !currentHideCardsState, 
+                            showChart: !currentShowChartState,
+                            showCards: currentHideCardsState,
+                            hideChart: currentShowChartState
+                        });
+    };
 
     async componentDidMount() {
         const fetchedData = await fetchData();
 
         this.setState({ data: fetchedData });
+
+        this.selectCards();
     }
 
     handleCountryChange = async (country) => {
@@ -29,7 +74,7 @@ class App extends React.Component {
 
     render() {
 
-        const { data, country } = this.state;
+        const { data, country, showCards, hideCards, showChart, hideChart } = this.state;
 
         return (
             <div className={styles.container}>
@@ -37,18 +82,18 @@ class App extends React.Component {
                 <nav className={`${styles.navbar} navbar navbar-expand-lg navbar-light bg-light justify-content-center`}>
                     <div>
                         <ul className={`${styles.navbarNav} navbar-nav`}>
-                            <li className={`${styles.navbarItem} active`}>                            
-                                <a className={`${styles.navbarLink} nav-link`} href="/">Cards</a>
+                            <li onClick={this.selectCards} className={this.state.activeCards ? `${styles.navbarItem} active`: `${styles.navbarItem}`}>                            
+                                <a className={`${styles.navbarLink} nav-link`} href="#">Cards</a>
                             </li>
-                            <li className={`${styles.navbarItem}`}>
-                                <a className={`${styles.navbarLink} nav-link`} href="/">Chart</a>
+                            <li onClick={this.selectChart} className={this.state.activeChart ? `${styles.navbarItem} active`: `${styles.navbarItem}`}>
+                                <a className={`${styles.navbarLink} nav-link`} href="#">Chart</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
                 <CountryPicker handleCountryChange={this.handleCountryChange} />
-                <Cards data={data} />
-                <Chart data={data} country={country} />
+                {hideChart && showCards && <Cards data={data} />}
+                {hideCards && showChart && <Chart data={data} country={country} />}
             </div>
         )
     }
