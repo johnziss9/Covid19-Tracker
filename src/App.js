@@ -5,7 +5,7 @@ import styles from './App.module.css';
 import './StylesOverwrite.css';
 import { fetchData } from './api';
 
-import covid19Image from './images/image.png';
+import covid19Image from './images/covid.png';
 
 class App extends React.Component {
 

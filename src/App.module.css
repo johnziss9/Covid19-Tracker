@@ -10,18 +10,8 @@ body {
 }
 
 .image {
-    width: 370px;
-    margin-top: 50px;
-}
-
-@media (max-width: 770px) {
-    .container {
-        margin: 0 10%;
-    }
-
-    .image {
-        width: 100%;
-    }
+    width: 900px;
+    height: 275px;
 }
 
 .navbar {
@@ -29,6 +19,7 @@ body {
     height: 50px;
     background-color: black !important;
     margin-bottom: 50px;
+    margin-top: 30px;
 }
 
 .navbarNav {
@@ -49,6 +40,19 @@ body {
 .navbarLink:hover {
     color: rgb(200, 200, 200);
     text-decoration: underline;
+}
+
+@media (max-width: 950px) {
+    .image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 770px) {
+    .container {
+        margin: 0 10%;
+    }
 }
 
 @media (max-width: 450px) {
