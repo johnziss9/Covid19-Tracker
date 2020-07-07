@@ -19,21 +19,46 @@ const Chart = ({ data: {confirmed, recovered, deaths }, country }) => {
     }, []);
 
     const lineChart = (
-        dailyData.length ? (<Line data={{ 
-            labels: dailyData.map(( { date } ) => date), 
-            datasets: [{
-                data: dailyData.map(( { confirmed } ) => confirmed),
-                label: 'Infected',
-                borderColor: '#3333ff',
-                fill: true
-            }, {
-                data: dailyData.map(( { deaths } ) => deaths),
-                label: 'Infected',
-                borderColor: 'red',
-                backgroundColor: 'rgba(255, 0, 0, 0.5)',
-                fill: true
-            }]
-        }} />) : null
+        dailyData.length ? (<Line 
+            data={{ 
+                labels: dailyData.map(( { date } ) => date), 
+                datasets: [{
+                    data: dailyData.map(( { confirmed } ) => confirmed),
+                    label: 'Infected',
+                    borderColor: 'rgba(183, 225, 255)',
+                    backgroundColor: 'rgba(0, 0, 255, 0.3)',
+
+                    fill: true
+                }, {
+                    data: dailyData.map(( { deaths } ) => deaths),
+                    label: 'Deaths',
+                    borderColor: 'red',
+                    backgroundColor: 'rgba(255, 0, 0, 0.7)',
+                    fill: true
+                }]
+            }}
+            options={{
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        },
+                        ticks: {
+                            fontColor: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        },
+                        ticks: {
+                            fontColor: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    }]
+                }
+            }}
+        />) 
+        : null
     );
 
     const barChart = (
@@ -48,8 +73,27 @@ const Chart = ({ data: {confirmed, recovered, deaths }, country }) => {
             }}
             options={{
                 legend: { display: false },
-                title: { display: true, text: `Current state in ${country}` }
+                title: { display: true, fontColor: 'white', text: `Current state in ${country}` },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        },
+                        ticks: {
+                            fontColor: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        },
+                        ticks: {
+                            fontColor: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    }]
+                }
             }}
+
         />) 
         : null
     );
