@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import styles from './Cards.module.css';
 
-const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }}) => {
+const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }, country }) => {
 
     if(!confirmed) {
         return 'Loading...';
@@ -21,7 +21,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }}) => {
                             <CountUp start={0} end={confirmed.value} duration={2.5} separator=',' />
                         </Typography>
                         <Typography color="textSecondary">Last Update: {new Date(lastUpdate).toDateString()}</Typography>
-                        <Typography variant="body2">This shows the total number of cases gloablly.</Typography>
+                        <Typography variant="body2">This shows the total number of cases { country ? country : `globally`}.</Typography>
                     </CardContent>
                 </Grid>
                 <Grid item component={Card} xs={12} sm={8} className={cx(styles.card, styles.recovered)}>
@@ -31,7 +31,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }}) => {
                             <CountUp start={0} end={recovered.value} duration={2.5} separator=',' />
                         </Typography>
                         <Typography color="textSecondary">Last Update: {new Date(lastUpdate).toDateString()}</Typography>
-                        <Typography variant="body2">This shows the total number of recoveries gloablly.</Typography>
+                        <Typography variant="body2">This shows the total number of recoveries { country ? country : `globally`}.</Typography>
                     </CardContent>
                 </Grid>
                 <Grid item component={Card} xs={12} sm={8} className={cx(styles.card, styles.deaths)}>
@@ -41,7 +41,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }}) => {
                             <CountUp start={0} end={deaths.value} duration={2.5} separator=',' />
                         </Typography>
                         <Typography color="textSecondary">Last Update: {new Date(lastUpdate).toDateString()}</Typography>
-                        <Typography variant="body2">This shows the total number of deaths gloablly.</Typography>
+                        <Typography variant="body2">This shows the total number of deaths { country ? country : `globally`}.</Typography>
                     </CardContent>
                 </Grid>
             </Grid>

@@ -92,7 +92,7 @@ class App extends React.Component {
                     </div>
                 </nav>
                 <CountryPicker handleCountryChange={this.handleCountryChange} />
-                {hideChart && showCards && <Cards data={data} />}
+                {hideChart && showCards && <Cards data={data} country={country} />}
                 {hideCards && showChart && <Chart data={data} country={country} />}
             </div>
         )
