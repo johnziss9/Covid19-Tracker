@@ -79,7 +79,7 @@ class App extends React.Component {
         return (
             <div className={styles.container}>
                 <img className={styles.image} src={covid19Image} alt="COVID-19" />
-                <nav className={`${styles.navbar} navbar navbar-expand-lg navbar-light bg-light justify-content-center`}>
+                <nav className={`${styles.navbar} navbar navbar-expand justify-content-center`}>
                     <div>
                         <ul className={`${styles.navbarNav} navbar-nav`}>
                             <li onClick={this.selectCards} className={this.state.activeCards ? `${styles.navbarItem} active`: `${styles.navbarItem}`}>                            

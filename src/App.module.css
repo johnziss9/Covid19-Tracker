@@ -50,3 +50,13 @@ body {
     color: rgb(200, 200, 200);
     text-decoration: underline;
 }
+
+@media (max-width: 450px) {
+    .navbar {
+        width: 300px;
+    }
+
+    .navbarItem {
+        width: 150px;
+    }
+}
