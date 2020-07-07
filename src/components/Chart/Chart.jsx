@@ -25,7 +25,7 @@ const Chart = ({ data: {confirmed, recovered, deaths }, country }) => {
                 datasets: [{
                     data: dailyData.map(( { confirmed } ) => confirmed),
                     label: 'Infected',
-                    borderColor: '#3333ff',
+                    borderColor: 'rgba(183, 225, 255)',
                     backgroundColor: 'rgba(0, 0, 255, 0.3)',
 
                     fill: true
@@ -73,7 +73,25 @@ const Chart = ({ data: {confirmed, recovered, deaths }, country }) => {
             }}
             options={{
                 legend: { display: false },
-                title: { display: true, text: `Current state in ${country}` }
+                title: { display: true, fontColor: 'white', text: `Current state in ${country}` },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        },
+                        ticks: {
+                            fontColor: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        },
+                        ticks: {
+                            fontColor: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    }]
+                }
             }}
 
         />) 
